@@ -26,7 +26,7 @@ def load_state():
             content = file.read().strip()
             if not content:
                 return {"seen":[]}
-            return json.load(content)
+            return json.loads(content)
     except (FileNotFoundError, json.JSONDecodeError):
         return {"seen":[]}
 
