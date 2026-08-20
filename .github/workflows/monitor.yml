@@ -23,6 +23,8 @@ jobs:
         run: pip install requests
 
       - name: Run IPO monitor
+        env:
+          NTFY_URL: ${{ secrets.NTFY_URL }}
         run: python main.py
 
       - name: Save IPO state
