@@ -23,8 +23,11 @@ def save_state(state):
 def load_state():
     try:
         with open(STATE_FILE) as file:
-            return json.load(file)
-    except FileNotFoundError:
+            content = file.read().strip()
+            if not content:
+                return {"seen":[]}
+            return json.load(content)
+    except (FileNotFoundError, json.JSONDecodeError):
         return {"seen":[]}
 
 def send_notification(ipos):
